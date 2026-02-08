@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7luguw0dlyej"]
+
+[ext_resource type="Script" uid="uid://c2vq1y8fjc3u7" path="res://scripts/main_menu.gd" id="1_8ln24"]
+[ext_resource type="Shader" uid="uid://ck60o0362uc43" path="res://shaders/texture_scroller.gdshader" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://n4v76muyqyva" path="res://textures/backgrounds/main_menu.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bm2jlfaarqm2j" path="res://textures/title.png" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://dj4xwvro4qr0i" path="res://textures/ui/start.png" id="4_wu84c"]
+[ext_resource type="FontFile" uid="uid://bxmgfj7pwi307" path="res://font/m5x7.ttf" id="6_rtw2f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
+shader = ExtResource("1_ekxnf")
+shader_parameter/scroll_speed = 0.2000000095
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.5000000475
+shader_parameter/repeat_y = 1.00000002375
+shader_parameter/row_offset = 0.0
+shader_parameter/texture_to_scroll = ExtResource("2_bqqt6")
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ln24")
+start_button = NodePath("StartButton")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wu84c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23333333
+anchor_top = 0.05625
+anchor_right = 0.76666665
+anchor_bottom = 0.45625
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bqqt6")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36666667
+anchor_top = 0.65
+anchor_right = 0.6333333
+anchor_bottom = 0.725
+offset_left = 28.0
+offset_top = 4.0
+offset_right = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(32, 10)
+texture = ExtResource("4_wu84c")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.575
+anchor_top = 0.8125
+anchor_right = 0.9875
+anchor_bottom = 0.98125
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_rtw2f")
+theme_override_font_sizes/font_size = 12
+text = "( Fan Reinterpretation )
+All rights belong to sega"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="StartButton" to="." method="_on_start_button_gui_input"]

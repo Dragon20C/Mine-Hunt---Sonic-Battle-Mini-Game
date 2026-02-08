@@ -1,0 +1,34 @@
+[gd_resource type="AnimatedTexture" load_steps=10 format=3 uid="uid://2xh8x04btnk0"]
+
+[ext_resource type="Texture2D" uid="uid://bsfbsxvqeqcyi" path="res://textures/hint_tiles/hint_tiles1.png" id="1_n7fp7"]
+[ext_resource type="Texture2D" uid="uid://b2f0wlgj8tooi" path="res://textures/hint_tiles/hint_tiles2.png" id="2_rp0ov"]
+[ext_resource type="Texture2D" uid="uid://c5reooegsm1rf" path="res://textures/hint_tiles/hint_tiles3.png" id="3_w7iwj"]
+[ext_resource type="Texture2D" uid="uid://bgvj8fh0yi6s7" path="res://textures/hint_tiles/hint_tiles4.png" id="4_r6gau"]
+[ext_resource type="Texture2D" uid="uid://bx7far565om05" path="res://textures/hint_tiles/hint_tiles5.png" id="5_73ir6"]
+[ext_resource type="Texture2D" uid="uid://bica5mu7i5xpb" path="res://textures/hint_tiles/hint_tiles6.png" id="6_r4573"]
+[ext_resource type="Texture2D" uid="uid://c0b1tgfh5haig" path="res://textures/hint_tiles/hint_tiles7.png" id="7_3w4h5"]
+[ext_resource type="Texture2D" uid="uid://8kmyj3tsn25p" path="res://textures/hint_tiles/hint_tiles8.png" id="8_e2a3j"]
+[ext_resource type="Texture2D" uid="uid://brk20x7ypuyfi" path="res://textures/hint_tiles/hint_tiles9.png" id="9_tii87"]
+
+[resource]
+resource_local_to_scene = true
+frames = 9
+pause = true
+frame_0/texture = ExtResource("1_n7fp7")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_rp0ov")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_w7iwj")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("4_r6gau")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("5_73ir6")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("6_r4573")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("7_3w4h5")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("8_e2a3j")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("9_tii87")
+frame_8/duration = 0.1

@@ -1,0 +1,851 @@
+[gd_scene load_steps=54 format=3 uid="uid://dy8owuj4rgyh2"]
+
+[ext_resource type="AudioStream" uid="uid://wxmposainmds" path="res://audio/Sonic Battle - Mine Hunt music.ogg" id="1_kimrg"]
+[ext_resource type="Script" uid="uid://338vjx32sbfd" path="res://scripts/game_2_0.gd" id="1_tqj7i"]
+[ext_resource type="Texture2D" uid="uid://bt6yhpq4ep03q" path="res://textures/backgrounds/mine_hunt_bg.png" id="2_3vt24"]
+[ext_resource type="Texture2D" uid="uid://dhwn3ubsk5mol" path="res://textures/ui/numbers/font2.png" id="3_3as86"]
+[ext_resource type="Texture2D" uid="uid://c1wi5sh0s11i2" path="res://textures/ui/stages_texture.png" id="3_7ag23"]
+[ext_resource type="Script" uid="uid://bx80p0gfosek2" path="res://scripts/state machine/state machine.gd" id="3_wwmew"]
+[ext_resource type="Script" uid="uid://6m5f3xl6ukb0" path="res://scripts/state machine/states/ready.gd" id="4_fq606"]
+[ext_resource type="Texture2D" uid="uid://0cy5380o17kb" path="res://textures/ui/numbers/font3.png" id="4_nbsmj"]
+[ext_resource type="Texture2D" uid="uid://b3csq1sdvkkcp" path="res://textures/ui/numbers/font1.png" id="4_ukhx7"]
+[ext_resource type="Texture2D" uid="uid://bmhfi472vqowk" path="res://textures/ui/bomb_counter_texture.png" id="5_bhu00"]
+[ext_resource type="Script" uid="uid://drx6fo1rhv1e7" path="res://scripts/state machine/states/selection.gd" id="5_pth6c"]
+[ext_resource type="Texture2D" uid="uid://c8rng4mkiv84l" path="res://textures/ui/numbers/font4.png" id="5_tyvac"]
+[ext_resource type="Texture2D" uid="uid://cleygjusmpy7y" path="res://textures/ui/numbers/font5.png" id="6_job6l"]
+[ext_resource type="Texture2D" uid="uid://c76p8dslpt1ys" path="res://objects/selector_animation.tres" id="6_uwuuq"]
+[ext_resource type="Script" uid="uid://dpqef5aek5ttg" path="res://scripts/state machine/states/condition.gd" id="6_ylyjl"]
+[ext_resource type="Texture2D" uid="uid://dyltn6lirh4ne" path="res://textures/ui/numbers/font6.png" id="7_3fto2"]
+[ext_resource type="Script" uid="uid://csetysigsfovm" path="res://scripts/state machine/states/flood_fill.gd" id="7_6mgro"]
+[ext_resource type="Script" uid="uid://1v5t8w5lties" path="res://scripts/state machine/states/won.gd" id="8_io7du"]
+[ext_resource type="Texture2D" uid="uid://d0cv8ebfou52y" path="res://textures/ui/numbers/font7.png" id="8_t8i3f"]
+[ext_resource type="Texture2D" uid="uid://cj5fwimtjumih" path="res://textures/ui/numbers/font8.png" id="9_lhqnj"]
+[ext_resource type="Script" uid="uid://cnilyerl2o5ev" path="res://scripts/state machine/states/lost.gd" id="9_w01xu"]
+[ext_resource type="Texture2D" uid="uid://b8n215jpg0wmp" path="res://textures/ui/numbers/font9.png" id="10_y8xqx"]
+[ext_resource type="Texture2D" uid="uid://dtorqqu7ct80x" path="res://textures/ui/numbers/font10.png" id="11_fg4by"]
+[ext_resource type="Texture2D" uid="uid://2xh8x04btnk0" path="res://objects/hint_animation.tres" id="12_oo4nj"]
+[ext_resource type="Texture2D" uid="uid://eopl1sftbn8i" path="res://objects/chao_animation.tres" id="13_tba12"]
+[ext_resource type="Texture2D" uid="uid://b0p6s0os85ghp" path="res://objects/bomb_animation.tres" id="14_a2wb6"]
+[ext_resource type="Texture2D" uid="uid://c3sd6lf7wd46c" path="res://textures/ui/game conditions/ready.png" id="16_tyvac"]
+[ext_resource type="Texture2D" uid="uid://c53m0y3mg5awu" path="res://textures/ui/game conditions/start.png" id="17_job6l"]
+[ext_resource type="Texture2D" uid="uid://dmi88g7tmxbxd" path="res://textures/ui/game conditions/clear.png" id="18_job6l"]
+[ext_resource type="Texture2D" uid="uid://b4pxlvg1b6jns" path="res://textures/ui/game conditions/game_over.png" id="19_lhqnj"]
+[ext_resource type="AudioStream" uid="uid://dmxqdrvle7yc7" path="res://audio/victory sfx.ogg" id="20_3fto2"]
+[ext_resource type="AudioStream" uid="uid://u232rdre83vm" path="res://audio/lost sfx.ogg" id="21_t8i3f"]
+[ext_resource type="AudioStream" uid="uid://dqrkh3x22xv3k" path="res://audio/explosion_sfx.ogg" id="23_y8xqx"]
+[ext_resource type="Texture2D" uid="uid://bhv68e6b5mj3u" path="res://textures/explosion_sprite_sheet.png" id="24_fg4by"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3as86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqomn"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rqoe"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo4nj"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tba12"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2wb6"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnj2m"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flgul"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmbcv"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go1sw"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slt84"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cmu4"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p6yi"]
+atlas = ExtResource("24_fg4by")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7n5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqomn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rqoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo4nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tba12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2wb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnj2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flgul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmbcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go1sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slt84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cmu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p6yi")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_3as86"]
+resource_name = "Intro"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/HBoxContainer/VSeparator:theme_override_constants/separation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [96, 90, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ReadyTex:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/StartTex:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Control/ReadyTex:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.4, 1.8, 2.1999998, 2.6, 3, 3.4, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/StartTex:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7000003, 4.8, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MusicPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MusicPlayer:autoplay")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Control/ClearTex:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Control/GameOverTex:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_t8i3f"]
+resource_name = "Lost"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LostSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/GameOverTex:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/GameOverTex:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 1.6, 1.9000001, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Control/GameOverTex:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, 6), Vector2(56, 67)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MusicPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nbsmj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/HBoxContainer/VSeparator:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ReadyTex:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/StartTex:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Control/ReadyTex:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3, 1.3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/StartTex:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/ClearTex:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Control/ClearTex:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4, 1.4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VictorySFX:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MusicPlayer:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MusicPlayer:autoplay")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LostSFX:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/Control/GameOverTex:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/Control/GameOverTex:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("CanvasLayer/Control/GameOverTex:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, 67)]
+}
+
+[sub_resource type="Animation" id="Animation_job6l"]
+resource_name = "Victory"
+length = 3.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ClearTex:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ClearTex:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.50000036, 0.8000001, 1.1000003, 1.4, 1.7000002, 1.9999999, 2.3000002, 2.6, 2.9, 3.2, 3.5, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VictorySFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyvac"]
+_data = {
+&"Intro": SubResource("Animation_3as86"),
+&"Lost": SubResource("Animation_t8i3f"),
+&"RESET": SubResource("Animation_nbsmj"),
+&"Victory": SubResource("Animation_job6l")
+}
+
+[node name="Game 2_0" type="Control" node_paths=PackedStringArray("state_machine", "field", "selector", "background", "stage_counter", "guess_counter", "bomb_counter", "animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqj7i")
+state_machine = NodePath("StateMachine")
+field = NodePath("CanvasLayer/Control/HBoxContainer/GridContainer")
+selector = NodePath("CanvasLayer/Control/Selector")
+digits = Array[Texture2D]([ExtResource("4_ukhx7"), ExtResource("3_3as86"), ExtResource("4_nbsmj"), ExtResource("5_tyvac"), ExtResource("6_job6l"), ExtResource("7_3fto2"), ExtResource("8_t8i3f"), ExtResource("9_lhqnj"), ExtResource("10_y8xqx"), ExtResource("11_fg4by")])
+background = NodePath("CanvasLayer/Control/Background")
+stage_counter = NodePath("CanvasLayer/Control/HBoxContainer/VBoxContainer/Top/StageCounter")
+guess_counter = NodePath("CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/GuessCounter")
+bomb_counter = NodePath("CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/BombCounter")
+animation_player = NodePath("AnimationPlayer")
+cell_texture = ExtResource("12_oo4nj")
+marker_texture = ExtResource("13_tba12")
+bomb_texture = ExtResource("14_a2wb6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.53333324
+anchor_top = -1.41875
+anchor_right = 1.55
+anchor_bottom = 1.70625
+offset_left = 0.99998474
+offset_top = -13.0
+offset_right = 1.0
+offset_bottom = -13.0
+mouse_filter = 0
+texture = ExtResource("2_3vt24")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(192, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3as86")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Top" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_7ag23")
+stretch_mode = 4
+
+[node name="StageCounter" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.53125
+anchor_right = 0.875
+anchor_bottom = 0.78125
+theme_override_constants/separation = -1
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Top/StageCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Top/StageCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Top/StageCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Bottom" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_bhu00")
+
+[node name="GuessCounter" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.41666666
+anchor_right = 0.875
+anchor_bottom = 0.5833333
+theme_override_constants/separation = -1
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/GuessCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/GuessCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/GuessCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="BombCounter" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.6666667
+anchor_right = 0.875
+anchor_bottom = 0.8333333
+theme_override_constants/separation = -1
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/BombCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/BombCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Number3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/Bottom/BombCounter"]
+layout_mode = 2
+texture = ExtResource("4_ukhx7")
+
+[node name="Selector" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+anchor_right = 0.06666667
+anchor_bottom = 0.1
+texture = ExtResource("6_uwuuq")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ReadyTex" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22375003
+anchor_top = 0.394375
+anchor_right = 0.77624995
+anchor_bottom = 0.605625
+offset_left = 15.299995
+offset_top = 3.9000015
+offset_right = -15.299988
+offset_bottom = -3.899994
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(51, 13)
+texture = ExtResource("16_tyvac")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="StartTex" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22375003
+anchor_top = 0.394375
+anchor_right = 0.77624995
+anchor_bottom = 0.605625
+offset_left = 15.299995
+offset_top = 3.9000015
+offset_right = -15.299988
+offset_bottom = -3.899994
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+pivot_offset = Vector2(51, 13)
+texture = ExtResource("17_job6l")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ClearTex" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23375
+anchor_top = 0.38937503
+anchor_right = 0.74125
+anchor_bottom = 0.60812503
+offset_left = 20.400002
+offset_top = 5.199997
+offset_right = -14.399994
+offset_bottom = -4.800003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+pivot_offset = Vector2(51, 13)
+texture = ExtResource("18_job6l")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOverTex" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14833333
+anchor_top = -0.36374998
+anchor_right = 0.8949999
+anchor_bottom = -0.13625002
+offset_left = 20.400002
+offset_top = 125.2
+offset_right = -30.799988
+offset_bottom = 114.80003
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(51, 13)
+texture = ExtResource("19_lhqnj")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kimrg")
+autoplay = true
+
+[node name="VictorySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_3fto2")
+
+[node name="LostSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_t8i3f")
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_y8xqx")
+
+[node name="ExplosionTex" type="AnimatedSprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_n7n5g")
+frame = 13
+frame_progress = 1.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_wwmew")
+initial_state = NodePath("Ready")
+
+[node name="Ready" type="Node" parent="StateMachine"]
+script = ExtResource("4_fq606")
+
+[node name="Selection" type="Node" parent="StateMachine"]
+script = ExtResource("5_pth6c")
+
+[node name="Condition" type="Node" parent="StateMachine"]
+script = ExtResource("6_ylyjl")
+
+[node name="FloodFill" type="Node" parent="StateMachine"]
+script = ExtResource("7_6mgro")
+
+[node name="Won" type="Node" parent="StateMachine"]
+script = ExtResource("8_io7du")
+
+[node name="Lost" type="Node" parent="StateMachine" node_paths=PackedStringArray("explosion_sfx", "explosion_tex")]
+script = ExtResource("9_w01xu")
+explosion_sfx = NodePath("../../ExplosionSFX")
+explosion_tex = NodePath("../../ExplosionTex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tyvac")
+}
+speed_scale = 1.2

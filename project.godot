@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Mine Hunt"
+run/main_scene="uid://c7luguw0dlyej"
+config/features=PackedStringArray("4.5")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Singleton="*res://scripts/singleton.gd"
+
+[display]
+
+window/size/viewport_width=240
+window/size/viewport_height=160
+window/size/window_width_override=960
+window/size/window_height_override=640
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "orange",
+"res://font/": "yellow",
+"res://objects/": "pink",
+"res://scenes/": "purple",
+"res://scripts/": "green",
+"res://shaders/": "pink",
+"res://textures/": "red"
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
+textures/default_filters/use_nearest_mipmap_filter=true

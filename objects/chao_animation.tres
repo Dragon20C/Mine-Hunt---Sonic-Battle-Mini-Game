@@ -1,0 +1,11 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://eopl1sftbn8i"]
+
+[ext_resource type="Texture2D" uid="uid://daggtvj2bk422" path="res://textures/guess_chao/guess_marker1.png" id="1_sf11l"]
+[ext_resource type="Texture2D" uid="uid://ho3sm0btikhh" path="res://textures/guess_chao/guess_marker2.png" id="2_lj05n"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_sf11l")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("2_lj05n")
+frame_1/duration = 0.25

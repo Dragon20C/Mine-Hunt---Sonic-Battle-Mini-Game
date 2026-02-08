@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmxqdrvle7yc7"
+path="res://.godot/imported/victory sfx.ogg-6c3856f0b189544078c23063da10e53e.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/victory sfx.ogg"
+dest_files=["res://.godot/imported/victory sfx.ogg-6c3856f0b189544078c23063da10e53e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
